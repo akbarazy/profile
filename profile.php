@@ -10,8 +10,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <link rel="stylesheet" href="static/css/font-awesome.min.css">
     <link rel="stylesheet" href="static/css/sidebar-style.css">
-    <link rel="stylesheet" href="static/css/header-style.css">
     <link rel="stylesheet" href="static/css/footer-style.css">
+    <link rel="stylesheet" href="static/css/profile-style.css">
+    <link rel="stylesheet" href="static/css/cropper.css">
 </head>
 
 <body>
@@ -27,15 +28,6 @@
         <div class="sidebar">
 
             <ul class="navbar-nav">
-                <li class="nav-item nav-profile mb-1">
-                    <a href="profile.php" class="nav-link text-center image-profile rounded-circle">
-                        <img src="static/images/user.png" alt="your-profile" width="70" class="rounded-circle">
-                    </a>
-                    <div class="bio-profile pb-2 text-center text-white">
-                        Hi, I am Akbarazy
-                    </div>
-                </li>
-
                 <li class="nav-item nav-home mt-1">
                     <a href="index.php" class="nav-link">
                         <i class="fa fa-home" aria-hidden="true"></i>
@@ -62,36 +54,51 @@
     <!-- end navbar -->
 
 
-    <!-- section header -->
+    <!-- section profile -->
 
-    <div class="container">
+    <div class="container mt-5">
         <div class="row">
+            <div class="col-10 offset-1">
 
-            <div class="col-10 offset-1 border-radius blue-shadow text-center mt-5 p-3">
-                <h1>Welcome To My Website, Admin</h1>
-                <p class="lead">This is a simple website for your profile test.</p>
+                <div class="card text-center">
+                    <form action="" method="post">
+                        <img src="static/images/favicon-apple.jpg" class="card-img-top background-card" alt="your-background-profile">
+                        <label for="upload-image">
+                            <img src="static/images/favicon-apple.jpg" class="card-img-top profile-card rounded-circle" alt="your-profile">
+                            <input type="file" id="upload-image" name="upload-image" style="display: none;">
+                        </label>
+                        <div class="card-body text-center pt-2 pb-4">
+                            <h5 class="card-title mb-1">Akbarazy</h5>
+                            <p class="card-text">Hi, I am Akbarazy</p>
+                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#setModal">Edit Bio</button>
+                        </div>
+                    </form>
+                </div>
+
             </div>
-
         </div>
     </div>
 
-    <!-- end header -->
-
-
-    <!-- section content -->
-
-    <div class="container">
-        <div class="row">
-
-            <div class="col-10 offset-1 border-radius black-shadow text-center mt-5 p-3 bg-primary text-white">
-                <h2>Visit my other website</h2>
-                <p class="lead">You can enjoy all the websites made by me.</p>
+    <div class="modal fade" id="setModal" tabindex="-1" role="dialog" aria-labelledby="titleModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <form action="" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="titleModal">Edit Bio</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body"></div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Edit Now</button>
+                    </div>
+                </form>
             </div>
-
         </div>
     </div>
 
-    <!-- end content -->
+    <!-- end profile -->
 
 
     <!-- section footer -->
@@ -126,6 +133,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
     <script src="static/js/navbar-script.js"></script>
+    <script src="static/js/cropper.js"></script>
 </body>
 
 </html>

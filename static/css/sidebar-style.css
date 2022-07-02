@@ -1,0 +1,80 @@
+.navbar-fixed {
+  position: fixed;
+  top: 12px;
+  left: 14.5px;
+  display: inline-block;
+  z-index: 9999;
+}
+
+.navbar-toggler {
+  padding: 0;
+}
+
+.navbar-toggler:hover .fa-bars {
+  color: #0056b3;
+}
+
+.fa-bars {
+  color: #007bff;
+}
+
+.navbar-view {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgb(63, 63, 63);
+  z-index: 9998;
+  width: 120px;
+  transform: translateX(-120px);
+  transition: 0.3s;
+}
+
+.show {
+  transform: translateX(0px);
+}
+
+.sidebar {
+  padding: 40px 17px;
+}
+
+.padding-left {
+  padding-left: 1.5px;
+}
+
+.image-profile {
+  padding: 18px 5px 10px 0 !important;
+  transition: 0.3s;
+}
+
+.bio-profile {
+  padding-right: 5px;
+}
+
+.image-profile:hover {
+  transform: scale(1.07);
+  filter: brightness(0.7);
+}
+
+.nav-profile {
+  border-bottom: 1px solid #007bff;
+}
+
+.nav-link {
+  transition: 0.3s;
+}
+
+.nav-home:hover,
+.nav-about:hover,
+.nav-logout:hover {
+  width: 120px !important;
+  margin-left: -17px !important;
+  padding-left: 17px !important;
+  background-color: #007bff;
+}
+
+.nav-home:hover .nav-link,
+.nav-about:hover .nav-link,
+.nav-logout:hover .nav-link {
+  color: white;
+}

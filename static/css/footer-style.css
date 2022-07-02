@@ -1,0 +1,35 @@
+.padding-footer {
+  padding: 16px 32px;
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+}
+
+.footer-subtitle {
+  padding-left: 4px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid #007bff;
+}
+
+.padding-right {
+  padding-right: 31px;
+  padding-left: 2.5px;
+  margin: 2px 0 !important;
+}
+
+.border-copyright {
+  border-top: 1px solid #007bff;
+}
+
+.text-copyright {
+  color: grey;
+}
+
+.copyright p:first-child {
+  margin-top: 8px !important;
+  margin-bottom: 2px !important;
+}
+
+.copyright p:last-child {
+  margin-top: 2px !important;
+  margin-bottom: 12px !important;
+}
