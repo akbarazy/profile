@@ -43,7 +43,7 @@
 }
 
 .image-profile {
-  padding: 18px 5px 10px 0 !important;
+  padding: 18px 5px 7px 0 !important;
   transition: 0.3s;
 }
 
@@ -53,7 +53,6 @@
 
 .image-profile:hover {
   transform: scale(1.07);
-  filter: brightness(0.7);
 }
 
 .nav-profile {

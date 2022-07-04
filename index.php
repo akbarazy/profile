@@ -1,3 +1,25 @@
+<?php
+require_once 'functions.php';
+
+if (!isset($_COOKIE['login'])) {
+    header('location: register.php');
+    exit;
+}
+
+$name = $_COOKIE['name'];
+$yourProfile = query("SELECT * FROM userprofile WHERE name = '$name'")[0];
+
+if (isset($_GET['logout'])) {
+    $id = $yourProfile['id'];
+    setcookie('login', '', time() - 3600);
+    setcookie('name', '', time() - 3600);
+    mysqli_query($connect, "DELETE FROM userprofile WHERE id = $id");
+
+    header('location: register.php');
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +33,6 @@
     <link rel="stylesheet" href="static/css/font-awesome.min.css">
     <link rel="stylesheet" href="static/css/sidebar-style.css">
     <link rel="stylesheet" href="static/css/header-style.css">
-    <link rel="stylesheet" href="static/css/footer-style.css">
 </head>
 
 <body>
@@ -29,10 +50,10 @@
             <ul class="navbar-nav">
                 <li class="nav-item nav-profile mb-1">
                     <a href="profile.php" class="nav-link text-center image-profile rounded-circle">
-                        <img src="static/images/user.png" alt="your-profile" width="70" class="rounded-circle">
+                        <img src="images/<?php echo $yourProfile['image']; ?>" alt="your-profile" width="70" class="rounded-circle">
                     </a>
-                    <div class="bio-profile pb-2 text-center text-white">
-                        Hi, I am Akbarazy
+                    <div class="bio-profile pb-2 text-center text-white" style="word-wrap: break-word;">
+                        <?php echo $yourProfile['name']; ?>
                     </div>
                 </li>
 
@@ -44,12 +65,12 @@
                 </li>
                 <li class="nav-item nav-about">
                     <a href="#" class="nav-link">
-                        <i class="fa fa-info-circle" aria-hidden="true"></i>
+                        <i class="fa fa-question-circle" aria-hidden="true"></i>
                         <span>About</span>
                     </a>
                 </li>
                 <li class="nav-item nav-logout">
-                    <a href="#" class="nav-link">
+                    <a href="index.php?logout=true" class="nav-link">
                         <i class="fa fa-sign-out" aria-hidden="true"></i>
                         <span>Logout</span>
                     </a>
@@ -92,36 +113,6 @@
     </div>
 
     <!-- end content -->
-
-
-    <!-- section footer -->
-
-    <div class="bg-dark mt-5">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-6 padding-footer text-white mt-4">
-                    <h5 class="footer-subtitle">Ability</h5>
-                    <p class="m-0 padding-right">CSS</p>
-                    <p class="m-0 padding-right">JS</p>
-                    <p class="m-0 padding-right">PHP</p>
-                </div>
-                <div class="col-6 padding-footer text-white mt-4 mb-4">
-                    <h5 class="footer-subtitle">Purpose</h5>
-                    <p class="m-0 padding-right">Learning</p>
-                    <p class="m-0 padding-right">Experience</p>
-                    <p class="m-0 padding-right">Trying</p>
-                </div>
-
-                <div class="col-10 offset-1 text-center text-copyright copyright border-copyright">
-                    <p>&copy; Copyright | By Akbarazy</p>
-                    <p class="mb-3">Design By Akbarazy 2022</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- end footer -->
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
