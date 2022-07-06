@@ -83,10 +83,10 @@ if (isset($_GET['logout'])) {
         <div class="row">
             <div class="col-10 offset-1">
 
-                <div class="card text-center">
-                    <img src="images/favicon-apple.jpg" class="card-img-top background-card" alt="your-background-profile">
-                    <label for="upload-image" id="profile-image">
-                        <img src="images/<?php echo $yourProfile['image']; ?>" class="card-img-top profile-card rounded-circle" alt="your-profile">
+                <div class="card text-center" style="border-radius: 5px;">
+                    <img src="images/background-user.jpg" class="card-img-top background-card" alt="your-background-profile">
+                    <label for="upload-image" id="profile-image" style="width: 100px; margin: auto;">
+                        <img src="images/<?php echo $yourProfile['image']; ?>" class="card-img-top profile-card rounded-circle" alt="your-profile" id="image-profile">
                     </label>
                     <input type="file" id="upload-image" name="upload-image" style="display: none;">
                     <div class="card-body text-center pt-2 pb-4">
@@ -111,11 +111,13 @@ if (isset($_GET['logout'])) {
                         </button>
                     </div>
                     <div class="modal-body" id="modal-body">
-                        <div class="col-8" id="container-cropper">
-                            <img src="" alt="your-profile" id="image-cropper">
-                        </div>
-                        <div class="col-4" id="container">
-                            <div class="preview" id="preview"></div>
+                        <div class="row">
+                            <div class="col-10 col-sm-7 container-cropper" id="container-cropper">
+                                <img src="" alt="your-profile" id="image-cropper">
+                            </div>
+                            <div class="col-4 col-sm-4 container-preview" id="container-preview">
+                                <div class="preview" id="preview" style="border-radius: 50%;"></div>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -145,7 +147,7 @@ if (isset($_GET['logout'])) {
                                     </label>
                                 </div>
                             </div>
-                            <input type="text" name="bio" class="form-control" id="bio" placeholder="Enter your bio" value="<?php echo $yourProfile['bio']; ?>" autocomplete="off" autofocus required>
+                            <input type="text" name="bio" class="form-control" id="bio" placeholder="Enter your bio" value="<?php echo $yourProfile['bio']; ?>" maxlength="30" autocomplete="off" autofocus required>
                             <input type="hidden" name='id' value='<?php echo $yourProfile['id']; ?>'>
                         </div>
                     </div>
@@ -197,7 +199,8 @@ if (isset($_GET['logout'])) {
                 cropper = null;
             });
 
-            $("#submit-crop").on("click", function() {
+            $("#submit-crop").on("click", function(event) {
+                event.preventDefault();
                 canvas = cropper.getCroppedCanvas({
                     width: 400,
                     height: 400
@@ -211,14 +214,15 @@ if (isset($_GET['logout'])) {
                         let base64data = reader.result;
 
                         $.ajax({
-                            url: "profile.php",
+                            url: "upload.php",
                             method: "POST",
                             data: {
                                 image: base64data
                             },
                             success: function(data) {
+                                console.log(data);
                                 modal.modal("hide");
-                                inputUploadImage.attr("src", data);
+                                $("#image-profile").attr("src", data);
                             }
                         });
                     }

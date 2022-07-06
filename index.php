@@ -86,10 +86,10 @@ if (isset($_GET['logout'])) {
     <!-- section header -->
 
     <div class="container">
-        <div class="row">
+        <div class="row justify-content-center">
 
-            <div class="col-10 offset-1 border-radius blue-shadow text-center mt-5 p-3">
-                <h1>Welcome To My Website, Admin</h1>
+            <div class="col-9 border-radius blue-shadow text-center mt-5 p-3" style="word-wrap: break-word;">
+                <h2>Welcome To My Website, <?php echo $yourProfile['name']; ?></h2>
                 <p class="lead">This is a simple website for your profile test.</p>
             </div>
 
@@ -102,9 +102,9 @@ if (isset($_GET['logout'])) {
     <!-- section content -->
 
     <div class="container">
-        <div class="row">
+        <div class="row justify-content-center">
 
-            <div class="col-10 offset-1 border-radius black-shadow text-center mt-5 p-3 bg-primary text-white">
+            <div class="col-9 border-radius black-shadow text-center mt-5 p-3 bg-primary text-white">
                 <h2>Visit my other website</h2>
                 <p class="lead">You can enjoy all the websites made by me.</p>
             </div>

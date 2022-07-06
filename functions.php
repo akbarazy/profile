@@ -1,24 +1,6 @@
 <?php
 $connect = mysqli_connect('localhost', 'root', '', 'profile');
 
-function uploadImage()
-{
-    $imageName = $_FILES['image']['name'];
-    $tmpName = $_FILES['image']['tmp_name'];
-
-    $formatValid = ["jpg", "jpeg", "png", "webp", "svg"];
-    $formatFile = explode(".", $imageName);
-    $formatFile = strtolower(end($formatFile));
-
-    if (!in_array($formatFile, $formatValid)) {
-        return false;
-    }
-
-    $newImageName = uniqid() . '.' . $formatFile;
-    move_uploaded_file($tmpName, "images/$newImageName");
-    return $newImageName;
-}
-
 function query($query)
 {
     global $connect;
@@ -41,6 +23,19 @@ function editBio()
 
         $query = "UPDATE userprofile SET
             bio = '$bio'
+        WHERE id = $id";
+        mysqli_query($connect, $query);
+        return;
+    }
+}
+
+function editImage($id, $image)
+{
+    global $connect;
+
+    if ($image !== null) {
+        $query = "UPDATE userprofile SET
+            image = '$image'
         WHERE id = $id";
         mysqli_query($connect, $query);
         return;
